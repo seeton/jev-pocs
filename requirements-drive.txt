@@ -1,0 +1,2 @@
+highway-env==1.12.1
+requests==2.34.2

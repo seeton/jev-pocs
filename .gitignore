@@ -1,0 +1,14 @@
+.env
+.env.*
+!.env.example
+*.dpapi
+*.log
+.venv/
+__pycache__/
+runs/
+.pytest_cache/
+*.pyc
+*.pem
+*.key
+.DS_Store
+Thumbs.db

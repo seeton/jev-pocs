@@ -1,0 +1,24 @@
+{
+  "model": "jev-latest",
+  "state": "昨日から決済画面でエラーが出て注文できません。本日中に購入する必要があります。至急調査をお願いします。",
+  "questions": {
+    "department": {
+      "type": "choice",
+      "instructions": "この問い合わせを担当すべき窓口はどれですか？",
+      "criteria": {
+        "billing": "請求金額、返金、契約に関する問い合わせ",
+        "technical": "システムの不具合やエラーに関する問い合わせ",
+        "sales": "製品選びや購入前の相談"
+      }
+    },
+    "urgency": {
+      "type": "noul",
+      "instructions": "この問い合わせは急ぎの対応を必要としていますか？"
+    },
+    "frustration": {
+      "type": "score",
+      "instructions": "問い合わせをした人の不満の強さを評価してください。",
+      "criteria": ["冷静", "不満があるが丁寧", "強い怒り"]
+    }
+  }
+}
