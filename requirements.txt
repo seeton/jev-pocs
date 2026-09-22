@@ -1,3 +1,4 @@
 -r requirements/drive.txt
 -r requirements/shogi.txt
 -r requirements/inspection.txt
+-r requirements/vision.txt
