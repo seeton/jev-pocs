@@ -14,7 +14,7 @@ os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 import pygame
 import requests
 
-ROOT = Path(__file__).resolve().parent
+from pocs.common.paths import ROOT
 ROLE_NAMES = {'tank': 'タンク', 'archer': 'アーチャー', 'mage': 'メイジ', 'healer': 'ヒーラー', 'boss': '巨兵', 'minion': '小型兵'}
 COLORS = {'tank': '#5cc8ff', 'archer': '#ffce67', 'mage': '#c397ff', 'healer': '#68e8b0', 'boss': '#fb7185', 'minion': '#fb9b79'}
 BATTLE_VERSION = 'tactical-v3'
@@ -492,7 +492,7 @@ def basic_orders(battle, choices):
 
 
 def baseline_orders(battle, choices):
-    from tactical_policy import tactical_orders
+    from pocs.battle.policy import tactical_orders
     state, _ = battle.snapshot()
     return tactical_orders(state, choices)
 

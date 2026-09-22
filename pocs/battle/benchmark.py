@@ -1,7 +1,7 @@
 """Fast deterministic baseline checks. No API, wall-clock waiting or model changes."""
 import json
-from pathlib import Path
-from battle import Battle, BATTLE_VERSION, baseline_orders
+from pocs.common.paths import ROOT
+from pocs.battle.app import Battle, BATTLE_VERSION, baseline_orders
 
 
 def run(interval, delay):
@@ -31,7 +31,7 @@ def run(interval, delay):
 
 if __name__=='__main__':
     results = [run(interval,delay) for interval,delay in [(0.25,0),(0.5,0),(0.5,0.25),(1,0.25)]]
-    destination = Path(__file__).resolve().parent/'runs'/f'battle-{BATTLE_VERSION}-baseline.json'
+    destination = ROOT/'runs'/f'battle-{BATTLE_VERSION}-baseline.json'
     destination.parent.mkdir(exist_ok=True)
     destination.write_text(json.dumps(results,indent=2),encoding='utf-8')
     print(json.dumps(results,indent=2))

@@ -1,6 +1,6 @@
 import unittest
-from battle import Battle, baseline_orders, basic_orders
-from tactical_policy import tactical_orders
+from pocs.battle.app import Battle, baseline_orders, basic_orders
+from pocs.battle.policy import tactical_orders
 import copy
 
 

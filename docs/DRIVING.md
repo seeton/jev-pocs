@@ -49,7 +49,7 @@ Jevのchoiceで角度と加速度を離散的に選ぶため、任意の実数�
 
 自車の位置・速度・車体の向き・現在のハンドル角と加速度、各車線の前後車両との距離・相対速度です。
 カメラ画像は使わず、シミュレーターから得られる正確な数値を使います。
-Jevへの指示と選択肢は `driving.py` の `Jev.decide()` にあります。
+Jevへの指示と選択肢は `pocs/driving/app.py` の `Jev.decide()` にあります。
 
 ## 遅延の扱いと画面表示
 
@@ -87,12 +87,14 @@ Python 3.12を用意し、プロジェクト内で以下を実行します。
 
 ```powershell
 python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements-drive.txt
-.\.venv\Scripts\python.exe -m unittest test_driving.py
+.\.venv\Scripts\python.exe -m pip install -r requirements/drive.txt
+.\.venv\Scripts\python.exe -m unittest tests.test_driving
 ```
 
-このPCでは `.venv` を作成済みです。依存関係の記録は `requirements-drive-lock.txt` にあります。
+このPCでは `.venv` を作成済みです。依存関係の記録は `requirements/drive-lock.txt` にあります。
 
 参考：
 - https://highway-env.farama.org/actions/
 - https://highway-env.farama.org/quickstart/
+
+起動・インストールのコマンドはリポジトリのルートで実行してください。

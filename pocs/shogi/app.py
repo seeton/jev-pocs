@@ -9,10 +9,10 @@ from pathlib import Path
 import pygame
 import requests
 import shogi
-from compare import buttons, clicked
-from shogi_tactics import annotate, material, best_reply_gain, VALUES
+from pocs.common.ui import buttons, clicked
+from pocs.shogi.tactics import annotate, material, best_reply_gain, VALUES
 
-ROOT=Path(__file__).resolve().parent
+from pocs.common.paths import ROOT
 MODEL='jev-preview'
 NAMES=['','歩','香','桂','銀','金','角','飛','玉','と','成香','成桂','成銀','馬','龍']
 CELL=62

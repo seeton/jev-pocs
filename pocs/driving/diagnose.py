@@ -3,10 +3,10 @@ import copy
 import json
 import os
 from pathlib import Path
-from driving import Jev
+from pocs.driving.app import Jev
 
-root = Path(__file__).resolve().parent
-logs = sorted((root / 'runs').glob('*/decisions.jsonl'), reverse=True)
+from pocs.common.paths import ROOT as root
+logs = sorted((root / 'runs').glob('[0-9]*/decisions.jsonl'), reverse=True)
 rows = [json.loads(line) for line in logs[0].read_text(encoding='utf-8').splitlines()]
 original = next(row['state'] for row in rows if row['state']['sim_seconds'] >= 8)
 client = Jev(os.environ.pop('TYPESAFE_API_KEY'), 4)

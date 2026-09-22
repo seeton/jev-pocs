@@ -18,7 +18,7 @@ import numpy as np
 import pygame
 import requests
 
-ROOT = Path(__file__).resolve().parent
+from pocs.common.paths import ROOT
 STEERING = {'left_medium': -0.06, 'left_small': -0.02, 'left_tiny': -0.006,
             'straight': 0.0, 'right_tiny': 0.006, 'right_small': 0.02, 'right_medium': 0.06}
 ACCELERATION = {'brake_hard': -6.0, 'brake': -3.0, 'ease_off': -1.0,

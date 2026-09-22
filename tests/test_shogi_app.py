@@ -2,8 +2,8 @@ import tempfile
 import unittest
 from pathlib import Path
 import shogi
-from shogi_app import Game
-from shogi_tactics import annotate, best_reply_gain, capture_gain, material
+from pocs.shogi.app import Game
+from pocs.shogi.tactics import annotate, best_reply_gain, capture_gain, material
 
 class ShogiTests(unittest.TestCase):
     def setUp(self):

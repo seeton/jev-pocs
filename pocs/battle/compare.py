@@ -10,28 +10,9 @@ import os
 from pathlib import Path
 import time
 
-from battle import Battle, BattleJev, BATTLE_VERSION, ROLE_NAMES, COLORS, ROOT, draw, pygame
-from tactical_policy import tactical_orders
-
-
-def buttons(screen, font, items):
-    """Draw controls and return the same rectangles used for mouse hit testing."""
-    areas = {}
-    for action, label, rect in items:
-        box = pygame.Rect(rect)
-        color = '#314d6b' if box.collidepoint(pygame.mouse.get_pos()) else '#203650'
-        pygame.draw.rect(screen, color, box, border_radius=9)
-        pygame.draw.rect(screen, '#55799c', box, width=1, border_radius=9)
-        rendered = font.render(label, True, '#e5edf9')
-        screen.blit(rendered, rendered.get_rect(center=box.center))
-        areas[action] = box
-    return areas
-
-
-def clicked(event, areas):
-    if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-        return next((action for action, rect in areas.items() if rect.collidepoint(event.pos)), None)
-    return None
+from pocs.battle.app import Battle, BattleJev, BATTLE_VERSION, ROLE_NAMES, COLORS, ROOT, draw, pygame
+from pocs.battle.policy import tactical_orders
+from pocs.common.ui import buttons, clicked
 
 
 def menu(screen, font, small, titlefont, has_key):
@@ -175,9 +156,11 @@ def main(argv=None, key=''):
               'timing':'Both snapshots taken on same simulation frame; both answers applied together on observed Jev response frame. Max age 1.5s for both.',
               'information':'Both policies use only snapshot and legal choices; no future state.',
               'limits':'Same simulation time cap; at most ceil(duration/interval)+1 requests, no earlier API call cap.',
-              'source_sha256':{name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in ('battle.py','tactical_policy.py','compare.py')}}
-    for name in ('battle.py','tactical_policy.py','compare.py'):
-        (folder/name).write_bytes((ROOT/name).read_bytes())
+              'source_sha256':{name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in ('pocs/battle/app.py','pocs/battle/policy.py','pocs/battle/compare.py','pocs/common/ui.py','pocs/common/paths.py')}}
+    for name in ('pocs/battle/app.py','pocs/battle/policy.py','pocs/battle/compare.py','pocs/common/ui.py','pocs/common/paths.py'):
+        target=folder/'source'/name
+        target.parent.mkdir(parents=True,exist_ok=True)
+        target.write_bytes((ROOT/name).read_bytes())
     (folder/'conditions.json').write_text(json.dumps(metadata,indent=2),encoding='utf-8')
     try:
         while running:

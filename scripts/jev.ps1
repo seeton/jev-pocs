@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [switch]$ConfigureKey,
     [switch]$Check,
@@ -8,6 +8,7 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
+$repoRoot = Split-Path -Parent $PSScriptRoot
 $ProgressPreference = 'SilentlyContinue'
 # Load the module that belongs to this PowerShell runtime before asking for a key.
 Import-Module "$PSHOME\Modules\Microsoft.PowerShell.Security\Microsoft.PowerShell.Security.psd1" -ErrorAction Stop
@@ -32,7 +33,7 @@ if ($SelfTest) {
     }
     exit 0
 }
-if (-not $RequestFile) { $RequestFile = Join-Path $PSScriptRoot 'examples\support-ticket.json' }
+if (-not $RequestFile) { $RequestFile = Join-Path $repoRoot 'examples\support-ticket.json' }
 $keyDirectory = Join-Path ([Environment]::GetFolderPath('LocalApplicationData')) 'jev'
 $keyFile = Join-Path $keyDirectory 'typesafe-api-key.dpapi'
 

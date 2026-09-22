@@ -1,0 +1,2 @@
+-r requirements/drive.txt
+-r requirements/shogi.txt

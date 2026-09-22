@@ -3,7 +3,7 @@ os.environ['SDL_VIDEODRIVER'] = 'dummy'
 import unittest
 from unittest.mock import Mock
 
-from driving import ACCELERATION, STEERING, Jev, accept_result, control_array, make_env
+from pocs.driving.app import ACCELERATION, STEERING, Jev, accept_result, control_array, make_env
 
 
 class DrivingTests(unittest.TestCase):

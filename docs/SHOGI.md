@@ -22,4 +22,6 @@ APIエラー時は自動再試行せず「再試行」ボタンを表示しま�
 合法手判定は python-shogi 1.1.1（GPL-3.0）を利用。
 https://github.com/gunyarakun/python-shogi
 このPoCでは4回の同一局面を引き分けにし、連続王手の千日手の反則判定・入玉宣言・持将棋の点数判定は未実装です。
-インストール: `.venv\Scripts\python.exe -m pip install -r requirements-shogi.txt`
+インストール: `.venv\Scripts\python.exe -m pip install -r requirements/shogi.txt`
+
+起動・インストールのコマンドはリポジトリのルートで実行してください。
